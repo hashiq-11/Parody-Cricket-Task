@@ -205,13 +205,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.98, z: 0}
+  m_LocalRotation: {x: -0, y: 0.9938489, z: -0.11074437, w: 0}
+  m_LocalPosition: {x: 0, y: 6.3, z: 21.83}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 12.716, y: 180, z: 0}
 --- !u!114 &330585547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -396,6 +396,7 @@ GameObject:
   - component: {fileID: 695824156}
   - component: {fileID: 695824155}
   - component: {fileID: 695824159}
+  - component: {fileID: 695824160}
   m_Layer: 0
   m_Name: CricketBall
   m_TagString: Untagged
@@ -490,7 +491,7 @@ Transform:
   m_GameObject: {fileID: 695824154}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.82, z: 44.31}
+  m_LocalPosition: {x: 0, y: 4.5, z: 14.15}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -523,6 +524,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &695824160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695824154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b352f4effb65d648b5873f02c192fa3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CricketBallController
+  currentState: 0
+  currentDeliveryType: 1
+  bounceMarker: {fileID: 1828937835}
+  forwardSpeed: 15
+  swingStrength: 0.8
+  swingMultiplier: 5
+  spinStrength: 0.8
+  spinAngleMultiplier: 25
 --- !u!1 &717538517
 GameObject:
   m_ObjectHideFlags: 0
@@ -630,8 +651,8 @@ Transform:
   m_GameObject: {fileID: 717538517}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 1, z: 10}
+  m_LocalPosition: {x: 0, y: -0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -696,6 +717,7 @@ GameObject:
   - component: {fileID: 1828937835}
   - component: {fileID: 1828937834}
   - component: {fileID: 1828937833}
+  - component: {fileID: 1828937836}
   m_Layer: 0
   m_Name: BounceMarker
   m_TagString: Untagged
@@ -769,12 +791,28 @@ Transform:
   m_GameObject: {fileID: 1828937831}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.107, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -8.09}
   m_LocalScale: {x: 0.5, y: 0.1, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1828937836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1828937831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0bc776ac95a4cb44a1873f765a02f8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MarkerController
+  moveSpeed: 10
+  xLimit: 1.5
+  zMin: -10
+  zMax: 10
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
