@@ -37,8 +37,6 @@ public class CricketBallController : MonoBehaviour
 
     void Update()
     {
-        // The Spacebar trigger is removed. The ball is now strictly controlled by the UI Manager.
-
         // Quick reset button for testing (Press R)
         if (Input.GetKeyDown(KeyCode.R))
         {
