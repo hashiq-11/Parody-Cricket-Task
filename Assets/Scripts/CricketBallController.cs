@@ -37,16 +37,15 @@ public class CricketBallController : MonoBehaviour
 
     void Update()
     {
-        // Throw the ball
-        if (currentState == BallState.Aiming && Input.GetKeyDown(KeyCode.Space))
-        {
-            BowlDelivery();
-        }
+        // The Spacebar trigger is removed. The ball is now strictly controlled by the UI Manager.
 
         // Quick reset button for testing (Press R)
         if (Input.GetKeyDown(KeyCode.R))
         {
-            ResetBall();
+            // Find the UI Manager and tell it to reset everything (so the meter starts moving again)
+            GameUIManager ui = Object.FindFirstObjectByType<GameUIManager>();
+            if (ui != null) ui.ResetGame();
+            else ResetBall();
         }
     }
 
@@ -63,7 +62,7 @@ public class CricketBallController : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Phase I Logic: Only curve if it's a Swing delivery [cite: 36, 108]
+        // Phase I Logic: Only curve if it's a Swing delivery
         if (currentState == BallState.InAir && currentDeliveryType == DeliveryType.Swing)
         {
             currentLateralVelocity += swingStrength * swingMultiplier * Time.fixedDeltaTime;
@@ -82,25 +81,25 @@ public class CricketBallController : MonoBehaviour
 
             if (currentDeliveryType == DeliveryType.Swing)
             {
-                // Phase I: Swing stops instantly [cite: 61]
+                // Phase I: Swing stops instantly
                 currentLateralVelocity = 0f;
             }
             else if (currentDeliveryType == DeliveryType.Spin)
             {
-                // Phase II: Spin changes direction exactly at bounce [cite: 124, 125]
+                // Phase II: Spin changes direction exactly at bounce
                 Vector3 velocityAtBounce = rb.linearVelocity;
 
                 // Calculate the sharp angle turn
                 float turnAngle = spinStrength * spinAngleMultiplier;
                 Quaternion spinRotation = Quaternion.Euler(0f, turnAngle, 0f);
 
-                // Apply the new rotated straight-line velocity [cite: 144]
+                // Apply the new rotated straight-line velocity
                 rb.linearVelocity = spinRotation * velocityAtBounce;
             }
         }
     }
 
-    // Helper method to let you test rapidly
+    // Helper method to reset the physics state
     public void ResetBall()
     {
         currentState = BallState.Aiming;
